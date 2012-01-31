@@ -1,0 +1,8 @@
+Name: gold
+URL: http://www.gnu.org/software/binutils/
+Version: 2.21.1
+
+Description:
+This directory contains a binary of the gold linker from GNU binutils.
+It was built from binutils-2.21.1 with configure as:
+  ./configure --enable-gold=default --enable-threads
