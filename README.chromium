@@ -4,5 +4,9 @@ Version: 2.21.1
 
 Description:
 This directory contains a binary of the gold linker from GNU binutils.
-It was built from binutils-2.21.1 with configure as:
+It was built from binutils-2.21.1 on 64-bit Ubuntu Lucid with configure as:
   ./configure --enable-gold=default --enable-threads
+
+(ld.bfd is a forwarding script that is in place because the NaCl build
+depends on there being a script with that name in the same directory as
+ld.)
