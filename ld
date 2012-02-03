@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2011 The Chromium Authors. All rights reserved.
+# Copyright (c) 2012 The Chromium Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -14,5 +14,6 @@ machine=$(gcc -dumpmachine)
 if [ "$machine" = "x86_64-linux-gnu" ]; then
     exec $base_dir/gold64 "$@"
 else
-    exec $base_dir/ld.bfd "$@"
+    # Fall back on the ld found in $PATH.
+    exec ld "$@"
 fi
