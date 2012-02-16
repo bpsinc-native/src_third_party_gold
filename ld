@@ -10,8 +10,8 @@
 # while this binary will also fail on 64-bit kernels with 32-bit userlands.
 
 base_dir=$(dirname "$0")
-machine=$(gcc -dumpmachine)
-if [ "$machine" = "x86_64-linux-gnu" ]; then
+machine=$(getconf LONG_BIT)
+if [ "$machine" = "64" ]; then
     exec $base_dir/gold64 "$@"
 else
     # Fall back on the ld found in $PATH.
