@@ -5,15 +5,18 @@
 
 # Wrapper script named "ld" that either executes gold or the system linker.
 
-# The gold binary was built on 64-bit Ubuntu Lucid.  Don't run it on
-# non-64-bit machines.  Note that "uname -m" prints the kernel architecture,
-# while this binary will also fail on 64-bit kernels with 32-bit userlands.
+# The gold binaries are built on 64-bit Ubuntu Lucid and 32-bit Ubuntu Lucid,
+# for x86_64 and i686, respectively.
+# Note that we do not use "uname -m" because it prints the kernel architecture,
+# which can cause failures on 64-bit kernels with 32-bit userlands.
 
 base_dir=$(dirname "$0")
 machine=$(getconf LONG_BIT)
 if [ "$machine" = "64" ]; then
     exec $base_dir/gold64 "$@"
+elif [ "$machine" = "32" ]; then
+    exec $base_dir/gold32 "$@"
 else
-    # Fall back on the ld found in $PATH.
-    exec ld "$@"
+    echo Unknown architecture
+    exit 1
 fi
