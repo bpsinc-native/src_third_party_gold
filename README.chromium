@@ -1,6 +1,8 @@
 Name: gold
 URL: http://www.gnu.org/software/binutils/
 Version: 2.21.1
+License: GPL v2
+Security Critical: no
 
 Description:
 This directory contains a binary of the gold linker from GNU binutils.
